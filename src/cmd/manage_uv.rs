@@ -27,5 +27,15 @@ fn install_uv_linux() {
 
 fn install_uv_windows() {
     println!("Install Astral UV by running this command:");
-    println!("winget install astral-uv.sh");
+    println!("winget install astral-sh.uv");
+    let output = Command::new("winget")
+        .arg("install")
+        .arg("astral-sh.uv")
+        .output()
+        .expect("Failed to execute command");
+    if output.status.success() {
+        println!("Astral UV installed successfully");
+    } else {
+        println!("Failed to install Astral UV");
+    }
 }
